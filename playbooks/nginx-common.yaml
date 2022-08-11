@@ -1,0 +1,31 @@
+---
+- name: update web, nfs and db servers
+  hosts: webservers, nfs
+  remote_user: ec2-user
+  become: yes
+  become_user: root
+  tasks:
+    - name: httpd installation
+      yum:
+        name: httpd
+        state: latest
+
+- name: update LB server
+  hosts: lb, db
+  remote_user: ubuntu
+  become: yes
+  become_user: root
+  tasks:
+    - name: Update apt repo
+      apt:
+        update_cache: yes
+
+    - name: nginx installation
+      apt:
+        name: nginx
+        state: latest
+        
+    - name: httpd installation
+      apt:
+        name: apache2
+        state: latest

@@ -1,0 +1,17 @@
+- hosts: lb, db
+  become: true
+  tasks:
+  - name: Update and upgrade apt packages
+    apt:
+      upgrade: yes
+      update_cache: yes
+      cache_valid_time: 86400
+
+
+- hosts: webservers
+  become: true
+  tasks:
+  - name: update and upgrade yum packages
+    yum:
+      name: "*"
+      state: latest

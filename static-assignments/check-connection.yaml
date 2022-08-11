@@ -1,0 +1,7 @@
+---
+- name: "check all connection"
+  hosts: all
+
+  tasks:
+  - name: Test connectivity
+    ping:

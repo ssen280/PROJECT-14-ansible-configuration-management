@@ -1,0 +1,7 @@
+---
+- name: "check all connection"
+  hosts: webservers, nfs, db, lb
+
+  tasks:
+  - name: Test connectivity
+    ping:
