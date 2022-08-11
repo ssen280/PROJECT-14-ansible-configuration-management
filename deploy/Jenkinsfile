@@ -9,12 +9,10 @@
         }
       }
     }
-  
-
-  stages {
-    stage('Build') {
-      steps {
-        script {
+    
+     stage('Build') {
+       steps {
+         script {
           sh 'echo "Building Stage"'
         }
       }
@@ -46,6 +44,7 @@
         cleanWs()
         }
       }
+   
     }
-    }
-}
+  }
+   
