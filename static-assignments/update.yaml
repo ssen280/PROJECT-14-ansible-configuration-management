@@ -1,4 +1,4 @@
-- hosts: lb, db
+- hosts: db
   become: true
   tasks:
   - name: Update and upgrade apt packages
@@ -8,7 +8,7 @@
       cache_valid_time: 86400
 
 
-- hosts: webservers
+- hosts: nginx
   become: true
   tasks:
   - name: update and upgrade yum packages

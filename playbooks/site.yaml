@@ -1,18 +1,24 @@
 ---
 - hosts: all
-
 - name: Include dynamic variables
-  import_playbook: ../static-assignments/update.yml
-  include: ../dynamic-assignments/env-vars.yml
-  tags:
-    - always
+  ansible.builtin.import_playbook: ../static-assignments/update.yml
 
-- name: Delete wireshark installation
-  import_playbook: ../static-assignments/common-del.yml
+- hosts: db
+- name: database assignment
+  ansible.builtin.import_playbook: ../static-assignments/db.yml
 
-- name: webserver
-  import_playbook: ../static-assignments/webservers.yml
+- hosts: nginx
+- name: nginx assignment
+  ansible.builtin.import_playbook: ../static-assignments/lb.yml
 
-- name: Loadbalancers assignment
-  import_playbook: ../static-assignments/lb.yml
-  when: load_balancer_is_required
+# - hosts: artifactory
+# - name: artifactory assignment
+#   ansible.builtin.import_playbook: ../static-assignments/artifactory.yml
+
+#- hosts: sonar
+#- name: sonar assignment
+#  ansible.builtin.import_playbook: ../static-assignments/sonar.yml
+
+# - hosts: todo
+# - name: Deploy the todo application
+#   ansible.builtin.import_playbook: ../static-assignments/deployment.yml
