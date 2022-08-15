@@ -1,15 +1,15 @@
 ---
 - hosts: all
 - name: Include dynamic variables
-  ansible.builtin.import_playbook: ../static-assignments/update.yml
+  ansible.builtin.import_playbook: ../static-assignments/update.yaml
 
 - hosts: db
 - name: database assignment
-  ansible.builtin.import_playbook: ../static-assignments/db.yml
+  ansible.builtin.import_playbook: ../static-assignments/db.yaml
 
 - hosts: nginx
 - name: nginx assignment
-  ansible.builtin.import_playbook: ../static-assignments/lb.yml
+  ansible.builtin.import_playbook: ../static-assignments/lb.yaml
 
 # - hosts: artifactory
 # - name: artifactory assignment
